@@ -23,9 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -81,7 +80,7 @@ DATABASES = {
         'NAME': 'spotapp',
         'USER': 'spotappuser',
         'PASSWORD': os.getenv('PSQLPASSWORD'),
-        'HOST': '127.0.0.1',
+        'HOST': os.getenv('PSQLHOST', '127.0.0.1'),
         'PORT': 5432,
     }
 }
@@ -125,4 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+ALLOWED_HOSTS = ['*']

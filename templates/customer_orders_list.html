@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h4>Заказы {{ request.user.customer.name}}:</h4>
+    {% if customer_orders %}
+        <ul>
+        {% for order in customer_orders %}
+            <li>
+             <a href="{%  url 'customer-order-detail' order.id %}">
+                 Заказ номер {{ order.id }} c продуктом {{ order.product.name }}
+              </a>
+            </li>
+        {%  endfor %}
+        </ul>
+    {% else %}
+        <p>У вас еще нет заказов</p>
+    {%  endif %}
+
+{% endblock %}

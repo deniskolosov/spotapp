@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.core.management import BaseCommand
 
+from shop.models import Customer
+
 
 class Command(BaseCommand):
 
@@ -10,5 +12,6 @@ class Command(BaseCommand):
             admin.is_active = True
             admin.is_admin = True
             admin.save()
+            self.stdout.write('Created superuser')
         else:
-            self.stdout.write('Superuser was created!')
+            self.stdout.write('Superuser was already created!')

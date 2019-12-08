@@ -1,5 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
- <h3>Hello</h3>
+
+{% if messages %}
+    <div class="col-sm-4">
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endfor %}
+    </div>
+{% endif %}
+ <h3>Добрый день, {{ request.user.customer.name }}!</h3>
+    <h4>Доступные товары:</h4>
+    {% if products %}
+        <ul>
+        {% for product in products %}
+            <li>
+             <a href="{%  url 'product-detail' product.id %}">
+                 {{ product.name }} {{ product.producer.name }}
+              </a>
+            </li>
+        {%  endfor %}
+        </ul>
+    {% else %}
+        Продуктов для покупки пока нет
+    {%  endif %}
+
 {% endblock %}

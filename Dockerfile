@@ -7,6 +7,7 @@ ENV PYTHONUNBUFFERED 1
 # password here for simplicity.
 ENV DJANGO_SECRET_KEY 'y0+2+@-*itbeq8nh*fh0m#=cf1e!77g@9&tl-3v_+y$8gzs%&l'
 ENV PSQLPASSWORD 'mystrongpassword'
+ENV PSQLHOST 'db'
 
 # Set work directory
 WORKDIR /code

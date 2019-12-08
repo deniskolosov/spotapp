@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p>Заказ # {{ customer_order.id }}</p>
+
+    <p>Состав:</p>
+    <ul>
+    <li> {{ customer_order.product }} от производителя {{ customer_order.product.producer }}</li>
+    </ul>
+
+{% endblock %}
